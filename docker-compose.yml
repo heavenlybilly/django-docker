@@ -1,0 +1,14 @@
+services:
+  django:
+    container_name: django
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PYTHON_VERSION=${PYTHON_VERSION}
+        - PORT=${PORT}
+        - PROJECT_PATH=${PROJECT_PATH}
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./${PROJECT_PATH}:/app
